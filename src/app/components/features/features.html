@@ -1,0 +1,38 @@
+<section id="features" class="features">
+    <div class="features-container">
+        <div class="features-header">
+            <div class="header-tag">
+                <span class="tag-bracket">[</span>
+                CARACTERÍSTICAS
+                <span class="tag-bracket">]</span>
+            </div>
+            <h2 class="features-title">
+                CYBERSECURITY <span class="glow-text">ARSENAL</span>
+            </h2>
+            <p class="features-subtitle">
+                Protección de grado militar impulsada por tecnología de vanguardia
+            </p>
+        </div>
+        <div class="features-grid">
+            <div *ngFor="let feature of features; let i = index" class="feature-card cyber-panel cyber-border"
+                [style.animation-delay]="i * 0.1 + 's'">
+                <div class="card-header">
+                    <div class="card-icon">{{ feature.icon }}</div>
+                    <div class="card-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">{{ feature.status }}</span>
+                    </div>
+                </div>
+                <h3 class="card-title">{{ feature.title }}</h3>
+                <p class="card-description">{{ feature.description }}</p>
+                <div class="card-footer">
+                    <button class="card-button" (click)="openFeatureDetail(feature)">
+                        <span>LEARN MORE</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+                </div>
+                <div class="card-line"></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+<footer id="contact" class="footer">
+  <div class="footer-top-line"></div>
+  
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <span class="logo-text glow-text">CYBER</span>
+          <span class="logo-bracket">[</span>
+          <span class="logo-dot">●</span>
+          <span class="logo-bracket">]</span>
+        </div>
+        <p class="brand-description">
+          Plataforma de ciberseguridad de próxima generación que protege la infraestructura digital en todo el mundo.
+        </p>
+        <div class="brand-social">
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.url" 
+             class="social-link"
+             [title]="social.name">
+            {{ social.icon }}
+          </a>
+        </div>
+      </div>
+
+      <div *ngFor="let section of footerSections" class="footer-section">
+        <h4 class="section-title">
+          <span class="title-bracket">[</span>
+          {{ section.title }}
+          <span class="title-bracket">]</span>
+        </h4>
+        <ul class="section-links">
+          <li *ngFor="let link of section.links">
+            <a [href]="link.url" class="section-link">
+              <span class="link-arrow">→</span>
+              {{ link.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom cyber-border">
+      <div class="footer-bottom-content">
+        <div class="footer-copyright">
+          <span class="copyright-text">
+            © {{ currentYear }} CYBER MATRIX. All rights reserved.
+          </span>
+        </div>
+        <div class="footer-status">
+          <span class="status-dot"></span>
+          <span class="status-text">ALL SYSTEMS OPERATIONAL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

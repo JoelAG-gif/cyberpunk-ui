@@ -1,0 +1,61 @@
+<section id="home" class="hero">
+    <div class="hero-particles"></div>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-status">
+                <span class="status-dot"></span>
+                <span class="status-text">SYSTEM ONLINE</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-bracket">[</span>
+                {{ displayText }}
+                <span class="cursor">|</span>
+                <span class="title-bracket">]</span>
+            </h1>
+            <p class="hero-subtitle">
+                Plataforma de ciberseguridad de última generación impulsada por inteligencia artificial.
+                Proteja su infraestructura digital 24/7 con cifrado de nivel militar.
+            </p>
+            <div class="hero-actions">
+                <button class="cyber-button primary" (click)="initiateScan()">
+                    <span>INITIATE SCAN</span>
+                    <span class="button-arrow">→</span>
+                </button>
+                <button class="cyber-button secondary" (click)="viewDocumentation()">
+                    <span>VIEW DOCUMENTATION</span>
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div *ngFor="let stat of stats" class="stat-item cyber-panel">
+                    <div class="stat-value glow-text">{{ stat.value }}</div>
+                    <div class="stat-label">{{ stat.label }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="visual-container cyber-border">
+                <div class="scan-line"></div>
+                <div class="grid-overlay"></div>
+                <div class="code-block">
+                    <div class="code-line">
+                        <span class="code-green">&gt;</span> INICIALIZANDO PROTOCOLOS DE SEGURIDAD...
+                    </div>
+                    <div class="code-line">
+                        <span class="code-green">&gt;</span> ESCANEO DEL PERIMETRO DE LA RED...
+                    </div>
+                    <div class="code-line">
+                        <span class="code-green">&gt;</span> NIVEL DE AMENAZA: <span class="code-green">MÍNIMO</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-green">&gt;</span> ESTADO: <span class="code-green">SEGURO</span>
+                    </div>
+                </div>
+                <div class="radar-circle circle-1"></div>
+                <div class="radar-circle circle-2"></div>
+                <div class="radar-circle circle-3"></div>
+                <div class="radar-line"></div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-bottom-line"></div>
+</section>

@@ -1,0 +1,156 @@
+<!-- Scan Modal -->
+<div *ngIf="activeModal === 'scan'" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content scan-modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()">✕</button>
+    
+    <h3 class="modal-title">NETWORK SECURITY SCAN</h3>
+    
+    <div class="scan-progress">
+      <div class="progress-info">
+        <span>Progress:</span>
+        <span class="progress-value">{{ scanProgress }}%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="scanProgress"></div>
+      </div>
+    </div>
+
+    <div class="scan-output">
+      <div *ngFor="let line of scanLines" 
+           [class]="'scan-line ' + (line.class || '')"
+           [style.display]="line.show ? 'block' : 'none'">
+        {{ line.text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature Detail Modal -->
+<div *ngIf="activeModal === 'feature' && activeFeature" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content feature-modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()">✕</button>
+    
+    <div class="feature-icon-large">{{ activeFeature.icon }}</div>
+    <h3 class="modal-title">{{ activeFeature.title }}</h3>
+    <p class="feature-description">{{ activeFeature.description }}</p>
+
+    <div class="feature-details">
+      <div class="detail-section">
+        <h4 class="detail-title">[SPECIFICATIONS]</h4>
+        <ul class="detail-list">
+          <li *ngFor="let spec of activeFeature.details.specs">
+            <span class="list-arrow">→</span> {{ spec }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h4 class="detail-title">[PERFORMANCE]</h4>
+        <p class="detail-text">{{ activeFeature.details.performance }}</p>
+      </div>
+
+      <div class="detail-section">
+        <h4 class="detail-title">[COMPATIBILITY]</h4>
+        <p class="detail-text">{{ activeFeature.details.compatibility }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Documentation Modal -->
+<div *ngIf="activeModal === 'docs'" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content docs-modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()">✕</button>
+    
+    <h3 class="modal-title">DOCUMENTATION</h3>
+    
+    <div class="docs-content">
+      <section class="docs-section">
+        <h4 class="docs-subtitle">[QUICK START]</h4>
+        <div class="code-block">
+          <div><span class="prompt">$</span> npm install @cyber-matrix/security</div>
+          <div><span class="prompt">$</span> cyber init --config</div>
+          <div><span class="prompt">$</span> cyber scan --full</div>
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <h4 class="docs-subtitle">[API REFERENCE]</h4>
+        <div class="api-list">
+          <div class="api-item">
+            <code>cyber.scan(options)</code>
+            <p>Inicia un escaneo de seguridad completo del sistema.</p>
+          </div>
+          <div class="api-item">
+            <code>cyber.protect(level)</code>
+            <p>Configura el nivel de protección (low, medium, high, military).</p>
+          </div>
+          <div class="api-item">
+            <code>cyber.monitor()</code>
+            <p>Activa el monitoreo en tiempo real de amenazas.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <h4 class="docs-subtitle">[INTEGRATION GUIDES]</h4>
+        <ul class="guide-list">
+          <li><span class="list-arrow">→</span> Cloud Integration</li>
+          <li><span class="list-arrow">→</span> On-Premise Setup</li>
+          <li><span class="list-arrow">→</span> Hybrid Deployment</li>
+          <li><span class="list-arrow">→</span> API Integration</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div *ngIf="activeModal === 'contact'" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content contact-modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()">✕</button>
+    
+    <h3 class="modal-title">[CONTACT US]</h3>
+    
+    <div class="contact-form">
+      <div class="form-group">
+        <label>NAME *</label>
+        <input 
+          type="text" 
+          [(ngModel)]="formData.name" 
+          placeholder="Your name"
+          required />
+      </div>
+
+      <div class="form-group">
+        <label>EMAIL *</label>
+        <input 
+          type="email" 
+          [(ngModel)]="formData.email" 
+          placeholder="your.email@company.com"
+          required />
+      </div>
+
+      <div class="form-group">
+        <label>COMPANY</label>
+        <input 
+          type="text" 
+          [(ngModel)]="formData.company" 
+          placeholder="Your company (optional)" />
+      </div>
+
+      <div class="form-group">
+        <label>MESSAGE *</label>
+        <textarea 
+          [(ngModel)]="formData.message" 
+          rows="4" 
+          placeholder="Tell us about your security needs..."
+          required></textarea>
+      </div>
+
+      <button class="submit-button" (click)="submitForm()">
+        SEND MESSAGE →
+      </button>
+    </div>
+  </div>
+</div>

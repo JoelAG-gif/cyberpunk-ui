@@ -1,0 +1,64 @@
+<section id="terminal" class="terminal-section">
+  <div class="terminal-container">
+    <div class="terminal-header-text">
+      <div class="header-tag">
+        <span class="tag-bracket">[</span>
+        INTERACTIVE TERMINAL
+        <span class="tag-bracket">]</span>
+      </div>
+      <h2 class="terminal-title">
+        COMMAND <span class="glow-text">CENTER</span>
+      </h2>
+      <p class="terminal-subtitle">
+        Ejecutar comandos de seguridad en tiempo real
+      </p>
+    </div>
+
+    <div class="terminal-wrapper cyber-border">
+      <div class="terminal-header">
+        <div class="terminal-buttons">
+          <span class="terminal-button close"></span>
+          <span class="terminal-button minimize"></span>
+          <span class="terminal-button maximize"></span>
+        </div>
+        <div class="terminal-title-bar">
+          <span class="glow-text">cyber@matrix</span>:~$
+        </div>
+        <div class="terminal-status">
+          <span class="status-dot"></span>
+          <span>CONNECTED</span>
+        </div>
+      </div>
+
+      <div class="terminal-output">
+        <div *ngFor="let line of terminalLines" 
+             class="terminal-line"
+             [ngClass]="line.type">
+          <span *ngIf="line.type === 'command'" class="prompt">$</span>
+          <span class="line-text">{{ line.text }}</span>
+          <span *ngIf="line.timestamp" class="timestamp">{{ line.timestamp }}</span>
+        </div>
+      </div>
+
+      <div class="terminal-input-wrapper">
+        <span class="prompt glow-text">$</span>
+        <input 
+          type="text" 
+          class="terminal-input"
+          [(ngModel)]="currentCommand"
+          (keyup.enter)="executeCommand()"
+          placeholder="Type command or select from quick actions..."
+          autocomplete="off">
+      </div>
+
+      <div class="terminal-quick-actions">
+        <div class="quick-actions-label">QUICK ACTIONS:</div>
+        <button *ngFor="let cmd of predefinedCommands" 
+                class="quick-action-btn"
+                (click)="insertCommand(cmd)">
+          {{ cmd }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

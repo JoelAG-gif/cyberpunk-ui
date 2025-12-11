@@ -1,0 +1,27 @@
+<nav class="navbar cyber-border">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <span class="logo-text glow-text">CYBER</span>
+      <span class="logo-bracket">[</span>
+      <span class="logo-dot">●</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <div class="navbar-menu" [class.active]="menuOpen">
+      <a *ngFor="let item of menuItems"
+         [href]="item.link"
+         class="navbar-link"
+         (click)="scrollTo(item.link)">
+        <span class="link-bracket">[</span>
+        {{ item.label }}
+        <span class="link-bracket">]</span>
+      </a>
+    </div>
+    <button class="cyber-button navbar-cta" (click)="openContactModal()">CONNECT</button>
+    <div class="navbar-toggle" (click)="toggleMenu()">
+      <span class="toggle-line"></span>
+      <span class="toggle-line"></span>
+      <span class="toggle-line"></span>
+    </div>
+  </div>
+  <div class="navbar-line"></div>
+</nav>

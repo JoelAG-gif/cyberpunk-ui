@@ -1,0 +1,142 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 14, 39, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  animation: slideInTop 0.5s ease;
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo-text {
+  letter-spacing: 3px;
+}
+
+.logo-bracket {
+  color: var(--cyber-green);
+  font-size: 28px;
+}
+
+.logo-dot {
+  color: var(--cyber-green);
+  animation: pulse 2s infinite;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.navbar-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-link:hover {
+  color: var(--cyber-green);
+}
+
+.link-bracket {
+  color: var(--cyber-green);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-link:hover .link-bracket {
+  opacity: 1;
+}
+
+.navbar-cta {
+  padding: 10px 25px;
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.toggle-line {
+  width: 30px;
+  height: 2px;
+  background: var(--cyber-green);
+  transition: all 0.3s ease;
+}
+
+.navbar-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+  animation: scan-line 3s infinite;
+}
+
+@media (max-width: 968px) {
+  .navbar-container {
+    padding: 15px 20px;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 300px;
+    height: calc(100vh - 70px);
+    background: var(--bg-panel);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 30px;
+    border-left: 2px solid var(--border-color);
+    transition: right 0.3s ease;
+    gap: 20px;
+  }
+
+  .navbar-menu.active {
+    right: 0;
+  }
+
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+}
